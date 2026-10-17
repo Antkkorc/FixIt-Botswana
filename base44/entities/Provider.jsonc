@@ -1,0 +1,65 @@
+{
+  "name": "Provider",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "service_category": {
+      "type": "string",
+      "enum": [
+        "Plumbing",
+        "Electrical",
+        "Appliance Repair"
+      ]
+    },
+    "area": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false
+    },
+    "credentials": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rating": {
+      "type": "number"
+    },
+    "review_count": {
+      "type": "number",
+      "default": 0
+    },
+    "jobs_completed": {
+      "type": "number",
+      "default": 0
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "years_experience": {
+      "type": "number"
+    },
+    "available": {
+      "type": "boolean",
+      "default": true
+    },
+    "response_time": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "service_category",
+    "area"
+  ]
+}

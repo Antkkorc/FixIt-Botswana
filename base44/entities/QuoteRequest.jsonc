@@ -1,0 +1,51 @@
+{
+  "name": "QuoteRequest",
+  "type": "object",
+  "properties": {
+    "provider_id": {
+      "type": "string"
+    },
+    "provider_name": {
+      "type": "string"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "customer_phone": {
+      "type": "string"
+    },
+    "service_needed": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "preferred_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "responded",
+        "accepted",
+        "declined"
+      ],
+      "default": "pending"
+    },
+    "quoted_price": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "provider_id",
+    "customer_name",
+    "customer_phone",
+    "service_needed",
+    "location"
+  ]
+}
