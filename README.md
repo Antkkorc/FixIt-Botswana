@@ -1,62 +1,36 @@
-# Base44 Project
+# FixIt Botswana
 
-Use this repository to run and edit the app locally, then publish changes back through Base44.
+FixIt Botswana is a React/Vite marketplace for discovering verified local service providers in Gaborone. The app uses Supabase Auth and Postgres for accounts, provider listings, quote requests, bookings, and reviews.
 
-Any change pushed to the repo will also be reflected in the Base44 Builder.
+## Setup
 
-## Prerequisites
-
-1. Clone the repository using the project's Git URL.
-2. Navigate to the project directory.
-3. Install dependencies: `npm install`.
-4. Install the Base44 CLI: `npm install -g base44@latest`.
-5. Install [Deno](https://docs.deno.com/runtime/getting_started/installation/) — the local Base44 backend runs on it.
-
-Run `base44 --help` (or see the [CLI reference](https://docs.base44.com/developers/references/cli/commands/introduction)) for the full command surface.
-
-## Run Locally
-
-Three commands, from the project root:
+Install Node.js 18 or newer, then run:
 
 ```bash
-base44 login   # one-time per machine
-base44 link    # one-time per clone
-base44 dev     # local backend + frontend together
+npm install
 ```
 
-Open the frontend URL that `base44 dev` prints (typically `http://localhost:5173`).
+Copy `.env.example` to `.env.local` and set:
 
-Notes:
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
 
-- **Every fresh clone needs `base44 link`.** It writes `base44/.app.jsonc` (the app-id pointer), which is deliberately gitignored. Your app id is in the Builder URL (`app.base44.com/apps/<id>/...`); `base44 link --help` shows the non-interactive flags.
-- **`base44 dev` runs the frontend for you** (via `site.serveCommand` in this repo's `base44/config.jsonc`) — never run `npm run dev` yourself: alone it serves a UI with no backend behind it (`[base44] Proxy not enabled`, every `/api` call fails), and alongside `base44 dev` the second Vite silently takes the next port and you end up looking at the wrong one.
-- **The app must be published at least once for the UI to load under `base44 dev`.** The frontend boots by fetching app settings from the hosted app; before the first publish that fails and every page redirects to login. The local API works regardless.
-- Entities, functions, and auth run locally — entity data is **in-memory only**, wiped when `base44 dev` restarts. Everything else (Core integrations, OAuth login) is forwarded to your deployed app. Full breakdown: [Local development overview](https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview).
+In the Supabase Dashboard, open **SQL Editor** and run [supabase/schema.sql](supabase/schema.sql) once.
 
-## Frontend Only, Hosted Backend
-
-To work on just the frontend against your app's live hosted backend:
+## Run locally
 
 ```bash
-base44 dev --remote
+npm run dev
 ```
 
-⚠️ In this mode writes go to your app's **production data** — plain `base44 dev` keeps everything local.
+Open `http://localhost:5173`.
 
-## Publish Your Changes
+## Supabase configuration
 
-After pushing your changes to git, open the Base44 dashboard and publish the app:
+In **Authentication > URL Configuration**, add the local URL and deployed Vercel URL. Enable Google under **Authentication > Providers** if Google sign-in is required.
 
-```bash
-base44 dashboard open
-```
+Provider records should have `owner_id` set to the provider user's profile ID. This allows the provider dashboard to receive requests and update availability safely through row-level security.
 
-This repo syncs to Base44 through git, so publish from the dashboard rather than `base44 deploy` — a CLI deploy ships your local tree directly, bypassing the sync, and the deployed state silently diverges from the repo.
+## Vercel deployment
 
-## Docs & Support
-
-GitHub integration: [https://docs.base44.com/developers/app-code/local-development/github](https://docs.base44.com/developers/app-code/local-development/github)
-
-Local development: [https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview](https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview)
-
-Support: [https://app.base44.com/support](https://app.base44.com/support)
+Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to the Vercel project for Production, Preview, and Development. The project builds with `npm run build` and outputs to `dist`.
