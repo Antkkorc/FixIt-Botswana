@@ -1,0 +1,16 @@
+{
+  "common": {
+    "currency": "BWP",
+    "search_placeholder": "Batla ditirelo, barupedi, kgotsa mafelo",
+    "near_me": "Gaufi le nna",
+    "book_now": "Buka jaanong"
+  },
+  "home": {
+    "hero_title": "Ditirelo tsa lehae tse di itekanetseng mo Botswana",
+    "hero_subtitle": "Tlhopha le go bua le barupedi ba ba tlhomilweng mo Gaborone, Francistown le mane morago"
+  },
+  "browse": {
+    "title": "Batlisisa ditirelo",
+    "no_results": "Ga go barupedi ba ba fitlhelang"
+  }
+}
