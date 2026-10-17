@@ -1,5 +1,6 @@
 import { Search, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLocalization } from '@/lib/LocalizationProvider';
 
 export default function SearchBar({
   service,
@@ -11,6 +12,8 @@ export default function SearchBar({
   areas,
   className,
 }) {
+  const { t } = useLocalization();
+
   return (
     <div className={cn("rounded-full bg-white/[0.07] border border-white/15 backdrop-blur-xl p-2 flex flex-col sm:flex-row gap-2 shadow-[0_24px_70px_-24px_rgba(0,0,0,0.7)]", className)}>
       <div className="flex-1 flex items-center gap-2 px-4 min-w-0">
@@ -20,7 +23,7 @@ export default function SearchBar({
           onChange={(e) => setService(e.target.value)}
           className="bg-transparent w-full text-white py-2.5 outline-none appearance-none [&>option]:bg-slate-900 cursor-pointer"
         >
-          <option value="">All services</option>
+          <option value="">{t('common.search_placeholder')}</option>
           {services.map((s) => (
             <option key={s} value={s}>{s}</option>
           ))}
@@ -34,7 +37,7 @@ export default function SearchBar({
           onChange={(e) => setLocation(e.target.value)}
           className="bg-transparent w-full text-white py-2.5 outline-none appearance-none [&>option]:bg-slate-900 cursor-pointer"
         >
-          <option value="">All areas</option>
+          <option value="">{t('common.near_me')}</option>
           {areas.map((a) => (
             <option key={a} value={a}>{a}</option>
           ))}
@@ -42,9 +45,9 @@ export default function SearchBar({
       </div>
       <button
         onClick={onSearch}
-        className="rounded-full px-7 py-3 text-white font-medium bg-gradient-to-r from-cyan-400 to-indigo-500 shadow-[0_8px_24px_-8px_rgba(34,211,238,0.6)] active:scale-95 transition-all duration-200 shrink-0"
+        className="rounded-full px-7 py-3 text-white font-medium bg-gradient-to-r from-cyan-400 to-indigo-500 shadow-[0_8px_24px_-8px_rgba(34,211,238,0.6)] active:scale-95 transition-all duration-150"
       >
-        Search
+        {t('common.book_now')}
       </button>
     </div>
   );

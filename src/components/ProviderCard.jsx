@@ -2,8 +2,12 @@ import { Star, MapPin, BadgeCheck, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import GlassCard from "./GlassCard";
 import ServiceIcon from "./ServiceIcon";
+import { formatCurrency } from '@/utils/formatCurrency';
+import { useLocalization } from '@/lib/LocalizationProvider';
 
 export default function ProviderCard({ provider }) {
+  const { t } = useLocalization();
+
   return (
     <Link to={`/provider/${provider.id}`} className="block group h-full">
       <GlassCard className="p-5 h-full group-hover:bg-white/[0.08] group-hover:-translate-y-1 group-hover:shadow-[0_22px_55px_-22px_rgba(34,211,238,0.55)]">
@@ -27,7 +31,12 @@ export default function ProviderCard({ provider }) {
             <span className="text-sm font-medium text-white">{provider.rating?.toFixed(1) ?? "—"}</span>
             <span className="text-xs text-white/50">({provider.review_count ?? 0})</span>
           </div>
-          <span className="text-xs text-white/50">{provider.jobs_completed ?? 0} jobs done</span>
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-semibold text-white">{formatCurrency(provider.base_price ?? 0)}</span>
+            <a href={`https://wa.me/${provider.phone}`} target="_blank" rel="noreferrer" className="text-sm text-cyan-300 hover:text-cyan-200 inline-flex items-center gap-1">
+              Message
+            </a>
+          </div>
         </div>
       </GlassCard>
     </Link>
