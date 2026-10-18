@@ -6,11 +6,37 @@
     "book_now": "Book now"
   },
   "home": {
-    "hero_title": "Trusted local services in Botswana",
-    "hero_subtitle": "Find and book vetted providers across Gaborone, Francistown and beyond"
+    "hero_badge": "Now launching in Gaborone · 3 service categories",
+    "hero_title": "Find, book, and trust local services",
+    "hero_subtitle": "A verified marketplace for homes, schools, and offices in Botswana. Get clear quotes, schedule the work, and keep a record of every job — all in one place.",
+    "categories_title": "Browse by category",
+    "verified_providers": "Verified providers",
+    "how_title": "How it works",
+    "how_text": "From a leaking tap to a rewired office — three steps to a job done right."
   },
-  "browse": {
-    "title": "Browse services",
-    "no_results": "No providers found"
+  "nav": {
+    "browse": "Browse",
+    "how": "How it works",
+    "for_providers": "For providers",
+    "my_bookings": "My bookings",
+    "get_started": "Get started"
+  },
+  "provider": {
+    "verified": "Verified",
+    "request_quote": "Request a quote",
+    "book_appointment": "Book appointment",
+    "credentials": "Credentials",
+    "no_credentials": "No credentials listed yet.",
+    "response_time": "Response time",
+    "availability": "Availability",
+    "available_now": "Available now",
+    "currently_busy": "Currently busy",
+    "request_sent": "Quote request sent!",
+    "booking_confirmed": "Appointment booked!",
+    "message_whatsapp": "Message via WhatsApp"
+  },
+  "footer": {
+    "trusted_local_services": "Trusted local services in Botswana",
+    "launching_in": "Launching in Gaborone · Verified providers only"
   }
 }

@@ -3,17 +3,21 @@ import { Wrench, Menu } from "lucide-react";
 import { useState } from "react";
 import GlassButton from "./GlassButton";
 import { cn } from "@/lib/utils";
+import { useLocalization } from '@/lib/LocalizationProvider';
 
 const nav = [
-  { label: "Browse", to: "/browse" },
-  { label: "How it works", to: "/#how" },
-  { label: "For providers", to: "/provider-dashboard" },
-  { label: "My bookings", to: "/my-bookings" },
+  { labelKey: "nav.browse", to: "/browse" },
+  { labelKey: "nav.how", to: "/#how" },
+  { labelKey: "nav.for_providers", to: "/provider-dashboard" },
+  { labelKey: "nav.my_bookings", to: "/my-bookings" },
 ];
 
 export default function Layout() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
+  const { locale, setLocale, t } = useLocalization();
+
+  const toggleLocale = () => setLocale(locale === 'en' ? 'tn' : 'en');
 
   return (
     <div className="min-h-screen text-white relative">
@@ -25,7 +29,7 @@ export default function Layout() {
       <header className="sticky top-0 z-50 px-4 sm:px-6 pt-4">
         <div className="max-w-6xl mx-auto rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-xl px-4 sm:px-6 py-3 flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-9 h-9 rounded-2xl bg-gradient-to-br from-cyan-400 to-indigo-500 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.5)] group-hover:shadow-[0_0_28px_rgba(99,102,241,0.7)] transition-all">
+            <div className="relative w-9 h-9 rounded-2xl bg-gradient-to-br from-cyan-400 to-indigo-500 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.5)] group-hover:shadow-[0_0_30px_rgba(34,211,238,0.7)]">
               <Wrench size={18} className="text-white" />
             </div>
             <span className="font-bold text-lg tracking-tight">
@@ -43,14 +47,17 @@ export default function Layout() {
                   pathname === n.to ? "bg-white/10 text-white" : "text-white/70 hover:text-white hover:bg-white/5"
                 )}
               >
-                {n.label}
+                {t(n.labelKey)}
               </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-2">
+            <button onClick={toggleLocale} className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-sm">
+              {locale === 'en' ? 'EN' : 'TN'}
+            </button>
             <GlassButton size="sm" as={Link} to="/browse" className="hidden sm:inline-flex animate-pulse-glow">
-              Get started
+              {t('nav.get_started')}
             </GlassButton>
             <button
               onClick={() => setOpen((o) => !o)}
@@ -70,7 +77,7 @@ export default function Layout() {
                 onClick={() => setOpen(false)}
                 className="px-4 py-3 rounded-full text-sm text-white/80 hover:bg-white/5"
               >
-                {n.label}
+                {t(n.labelKey)}
               </Link>
             ))}
           </div>
@@ -87,9 +94,9 @@ export default function Layout() {
             <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-cyan-400 to-indigo-500 flex items-center justify-center">
               <Wrench size={14} className="text-white" />
             </div>
-            <span>FixIt BW — Trusted local services in Botswana</span>
+            <span>FixIt BW — {t('footer.trusted_local_services')}</span>
           </div>
-          <p>Launching in Gaborone · Verified providers only</p>
+          <p>{t('footer.launching_in')}</p>
         </div>
       </footer>
     </div>

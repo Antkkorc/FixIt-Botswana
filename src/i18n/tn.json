@@ -6,11 +6,37 @@
     "book_now": "Buka jaanong"
   },
   "home": {
-    "hero_title": "Ditirelo tsa lehae tse di itekanetseng mo Botswana",
-    "hero_subtitle": "Tlhopha le go bua le barupedi ba ba tlhomilweng mo Gaborone, Francistown le mane morago"
+    "hero_badge": "Sena se simolola mo Gaborone · dikarolo tsa ditirelo tse 3",
+    "hero_title": "Tlhopa, buka, mme o ikanye ka ditirelo tsa lehae",
+    "hero_subtitle": "Maraka o o netefaditsweng wa mafelo a ditoro, dikolo, le makaleng mo Botswana. Tsenya dikopo tsa sekatlholo, rulaganya tiro, mme boloka rekoto ya tiro nngwe le nngwe — tsotlhe sebakeng se le sengwe.",
+    "categories_title": "Batlisisa ka sehlopha",
+    "verified_providers": "Barupedi ba ba netefaditsweng",
+    "how_title": "Tsela e e dirang",
+    "how_text": "Go tswa mo tap e e fufilweng go fitlha ka thulaganyo ya ofisi — dikgato tse tharo go dira tiro ka fa ntle."
   },
-  "browse": {
-    "title": "Batlisisa ditirelo",
-    "no_results": "Ga go barupedi ba ba fitlhelang"
+  "nav": {
+    "browse": "Batlisisa",
+    "how": "Tsela e e dirang",
+    "for_providers": "Bakeng sa barupedi",
+    "my_bookings": "Buka tsa me",
+    "get_started": "Simolola"
+  },
+  "provider": {
+    "verified": "Netefaditswe",
+    "request_quote": "Kopa sekatlholo",
+    "book_appointment": "Buka kopano",
+    "credentials": "Dikarolo",
+    "no_credentials": "Ga go dikarolo tse diteng mo go tsena.",
+    "response_time": "Nako ya karabo",
+    "availability": "Ponelopele",
+    "available_now": "A a teng jaanong",
+    "currently_busy": "Ga a tlhole a le teng",
+    "request_sent": "Kopo ya sekatlholo e rometswe!",
+    "booking_confirmed": "Kopano e e bukilwe!",
+    "message_whatsapp": "Romela molaetsa ka WhatsApp"
+  },
+  "footer": {
+    "trusted_local_services": "Ditirelo tsa lehae tse di tlotlegang mo Botswana",
+    "launching_in": "Se simologile mo Gaborone · Barupedi ba ba netefaditsweng fela"
   }
 }
